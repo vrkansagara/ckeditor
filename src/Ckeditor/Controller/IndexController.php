@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vallabh
- * Date: 26/02/18
- * Time: 8:06 AM
- */
-
 namespace Ckeditor\Controller;
 
 
