@@ -1,3 +1,5 @@
 <?php
 //echo $this->headLink()->prependStylesheet($this->basePath('assets') . '/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css');
-echo $this->headScript()->prependFile($this->basePath('assets') . '/ckeditor/ckeditor.js');
+echo $this->headLink()->prependStylesheet($this->basePath('assets') . '/select2-4.0.5/dist/css/select2.min.css');
+echo $this->headScript()->prependFile($this->basePath('assets') . '/ckeditor/ckeditor.js')
+        ->prependFile($this->basePath('assets') . '/select2-4.0.5/dist/js/select2.js');

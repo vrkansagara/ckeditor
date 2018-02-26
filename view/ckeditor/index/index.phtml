@@ -1,13 +1,20 @@
 <?php $this->render('ckeditor'); ?>
 <div class="container">
-    <form>
-    <textarea name="editor1" id="editor1" rows="10" cols="80">
-        This is my textarea to be replaced with CKEditor.
-    </textarea>
-        <script>
-            // Replace the <textarea id="editor1"> with a CKEditor
-            // instance, using default configuration.
-            CKEDITOR.replace('editor1');
-        </script>
+    <form action="<?php echo $this->url('ckeditor', array('action' => 'save')); ?>" method="post" id='' name="advancedsettingsform">
+        <input style="width: 100%" type="text" name="title" value="" placeholder="Hello title...">
+        <textarea name="editor" id="editor" rows="10" cols="80">
+            This is my textarea to be replaced with CKEditor.
+        </textarea>
+        <select style="width: 60%" id="tags" name="tags[]" multiple="multiple">
+            <option value="news">News</option>
+            <option value="release">Release</option>
+            <option value="feature">Feature</option>
+        </select>
     </form>
 </div>
+<script>
+    CKEDITOR.replace('editor');
+    $(document).ready(function() {
+        $('#tags').select2();
+    });
+</script>
