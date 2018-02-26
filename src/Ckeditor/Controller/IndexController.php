@@ -40,6 +40,13 @@ class IndexController extends AbstractActionController {
   }
 
   public function saveAction() {
+
+    $flashMessenger = $this->flashMessenger();
+    if ($flashMessenger->hasMessages()) {
+      $return['messages'] = $flashMessenger->getMessages();
+    }
+
+
     $this->getConfig();
     $request = $this->getRequest();
 
@@ -48,10 +55,11 @@ class IndexController extends AbstractActionController {
       $editorData = $request->getPost('editor');
       $title = $request->getPost('title');
       $tags = $request->getPost('tags');
-      $fileId = $this->config['postDir'] .'/'.preg_replace('/\s+/', '_', $title);
+      $fileId = $this->config['postDir'] .'/'.preg_replace('/\s+/', '-', $title).'.html';
       $this->write($fileId,$editorData);
 
-      return $this->url($this->moduleSlug);
+      $this->flashMessenger()->addMessage('File saved successfully!!!!');
+      return $this->redirect()->toRoute($this->moduleSlug,array('action' => 'index',compact($return)));
     }
   }
 
